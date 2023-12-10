@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "google-speech",
   "module": "index.ts",
   "type": "module",
   "scripts": {
