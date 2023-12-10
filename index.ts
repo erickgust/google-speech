@@ -1,5 +1,5 @@
 import { Server } from 'socket.io';
-import { record } from './recorder';
+import { startStream } from './recorder';
 
 const options = {
   cors: {
@@ -13,11 +13,15 @@ const io: Server = new Server(3131, options);
 io.on("connection", (socket) => {
   console.log("a user connected");
 
+  socket.on("transcript", (transcript: string) => {
+    io.emit("transcript", transcript);
+  })
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   })
 });
 
-record();
+startStream();
 
 export { io };
